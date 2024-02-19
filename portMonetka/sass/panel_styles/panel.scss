@@ -1,0 +1,458 @@
+@use "../index_styles/colors";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	height: 100vh;
+	font-family: "Raleway", sans-serif;
+	font-size: 1.6rem;
+	color: colors.$white;
+	background-color: colors.$dark;
+	overflow-x: hidden;
+}
+
+.sidebar {
+	position: fixed;
+	// left: 0;
+	// top: 0;
+	height: 100%;
+	width: 78px;
+	background: colors.$darker;
+	padding: 6px 14px;
+	z-index: 99;
+	transition: all 0.5s ease;
+
+	&.open {
+		width: 250px;
+	}
+
+	&__logo {
+		display: flex;
+		align-items: center;
+		position: relative;
+		height: 60px;
+
+		&-name {
+			color: #fff;
+			font-size: 20px;
+			font-weight: 600;
+			opacity: 0;
+			transition: all 0.5s ease;
+		}
+
+		#btn {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			transform: translateY(-50%);
+			font-size: 22px;
+			text-align: center;
+			transition: all 0.4s ease;
+			cursor: pointer;
+		}
+	}
+
+	i {
+		color: #fff;
+		height: 60px;
+		min-width: 50px;
+		font-size: 28px;
+		text-align: center;
+		line-height: 60px;
+	}
+
+	&__list {
+		margin-top: 20px;
+		height: 100%;
+
+		li {
+			position: relative;
+			margin: 8px 0;
+			list-style: none;
+
+			.tooltip {
+				position: absolute;
+				top: -20px;
+				left: calc(100% + 15px);
+				padding: 6px 12px;
+				background: #fff;
+				color: black;
+				box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+				border-radius: 4px;
+				font-size: 15px;
+				font-weight: 400;
+				white-space: nowrap;
+				pointer-events: none;
+				opacity: 0;
+				z-index: 3;
+				transition: 0s;
+			}
+
+			&:hover .tooltip {
+				opacity: 1;
+				top: 50%;
+				pointer-events: auto;
+				transform: translateY(-50%);
+				transition: all 0.4s ease;
+			}
+
+			a {
+				display: flex;
+				align-items: center;
+				height: 100%;
+				width: 100%;
+				background: colors.$dark;
+				border-radius: 12px;
+				text-decoration: none;
+				transition: all 0.4s ease;
+
+				&:hover {
+					background: #fff;
+				}
+
+				&:hover .sidebar__item-name,
+				&:hover i {
+					transition: all 0.5s ease;
+					color: #11101d;
+				}
+			}
+
+			i {
+				height: 50px;
+				line-height: 50px;
+				font-size: 18px;
+				border-radius: 12px;
+			}
+		}
+	}
+
+	&__item-name {
+		color: #fff;
+		font-size: 15px;
+		font-weight: 400;
+		white-space: nowrap;
+		opacity: 0;
+		pointer-events: none;
+		transition: 0.4s;
+	}
+
+	li.sidebar__profile {
+		position: fixed;
+		height: 60px;
+		width: 78px;
+		left: 0;
+		bottom: -8px;
+		padding: 10px 14px;
+		background: colors.$darker;
+		transition: all 0.5s ease;
+		overflow: hidden;
+	}
+
+	&__profile {
+		&-logout {
+			border: none;
+
+			i {
+				cursor: pointer;
+
+				&:hover {
+					color: colors.$gold;
+				}
+			}
+		}
+	}
+}
+// ====================
+.sidebar.open {
+	.sidebar__logo {
+		&-name {
+			opacity: 1;
+		}
+
+		#btn {
+			text-align: right;
+		}
+	}
+
+	li {
+		.tooltip {
+			display: none;
+		}
+	}
+
+	li.sidebar__profile {
+		width: 250px;
+	}
+
+	.sidebar__item-name {
+		opacity: 1;
+		pointer-events: auto;
+	}
+}
+
+// ====================
+
+.sidebar li .sidebar__profile-details {
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+.sidebar li img {
+	height: 45px;
+	width: 45px;
+	object-fit: cover;
+	border-radius: 6px;
+	margin-right: 10px;
+}
+.sidebar li.sidebar__profile .sidebar__username {
+	font-size: 15px;
+	font-weight: 400;
+	color: #fff;
+	white-space: nowrap;
+}
+
+.sidebar .sidebar__profile #log_out {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	background: colors.$darker;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	border-radius: 0px;
+	transition: all 0.5s ease;
+}
+.sidebar.open .sidebar__profile #log_out {
+	width: 50px;
+	background: none;
+}
+.home-section {
+	position: relative;
+	background: #e4e9f7;
+	min-height: 100vh;
+	top: 0;
+	left: 78px;
+	width: calc(100% - 78px);
+	transition: all 0.5s ease;
+	z-index: 2;
+}
+.sidebar.open ~ .home-section {
+	left: 250px;
+	width: calc(100% - 250px);
+}
+.home-section .text {
+	display: inline-block;
+	color: #11101d;
+	font-size: 25px;
+	font-weight: 500;
+	margin: 18px;
+}
+
+// =====================
+// MAIN
+
+main {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin-left: 78px;
+
+	.options {
+		padding-top: 20px;
+		width: 500px;
+		border-bottom: 1px solid colors.$darker;
+	}
+}
+
+h2.title {
+	margin-bottom: 30px;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 200;
+}
+
+.available-money {
+	margin-top: -10px;
+	text-align: center;
+	font-size: 40px;
+}
+
+.controls {
+	display: flex;
+	justify-content: space-around;
+	margin: 25px 0;
+}
+
+.controls button {
+	padding: 1em;
+	margin-top: 1em;
+	border: 1px solid colors.$gold;
+	border-radius: 5px;
+	background: none;
+	color: colors.$gold;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.controls button:hover {
+	outline: none;
+	color: colors.$dark;
+	background-color: colors.$gold;
+}
+
+.controls i {
+	margin-right: 10px;
+}
+
+.add-transaction-panel {
+	display: none;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: colors.$darker;
+	color: #fff;
+	z-index: 100;
+
+	&__title {
+		font-size: 32px;
+		padding-top: 20px;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: 200;
+	}
+}
+
+.add-transaction-panel label {
+	margin-top: 40px;
+	margin-bottom: 5px;
+	font-size: 26px;
+}
+
+.add-transaction-panel small {
+	margin-bottom: 15px;
+	font-style: italic;
+	padding: 0 20px;
+	color: #ddd;
+}
+
+.add-transaction-panel input,
+.add-transaction-panel select {
+	width: 80%;
+}
+
+.add-transaction-panel input,
+.add-transaction-panel select,
+.add-transaction-panel button {
+	padding: 10px 20px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.add-transaction-panel input,
+.add-transaction-panel select,
+.add-transaction-panel option {
+	font-size: 18px;
+}
+
+.add-transaction-panel input,
+.add-transaction-panel select {
+	color: #fff;
+}
+
+.add-transaction-panel option {
+	color: black;
+}
+
+.add-transaction-panel input,
+.add-transaction-panel select,
+.add-transaction-panel option {
+	background: none;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+
+	&:focus {
+		outline: none;
+		border: 1px solid colors.$gold;
+	}
+}
+
+.add-transaction-panel .panel-buttons {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+}
+
+.add-transaction-panel button {
+	margin: 0 10px;
+	padding: 15px 30px;
+	font-size: 14px;
+	border: 1px solid #d6c78e;
+	background: none;
+	color: #d6c78e;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+}
+.add-transaction-panel button:hover {
+	background-color: rgb(25, 27, 51);
+
+	&:hover {
+		outline: none;
+		color: colors.$dark;
+		background-color: colors.$gold;
+	}
+}
+
+// historia
+.history {
+	margin-left: 78px;
+	padding-top: 20px;
+
+	&__title {
+		margin-bottom: 30px;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: 200;
+	}
+
+	&__table {
+		margin: 0 auto;
+		border-collapse: collapse;
+		width: 90%;
+
+		th {
+			font-weight: 500;
+		}
+
+		th,
+		td {
+			padding: 0.25rem;
+			text-align: left;
+			border: 1px solid colors.$gold;
+		}
+
+		tbody tr:nth-child(odd) {
+			background: colors.$darker;
+		}
+	}
+}
+
+@media (max-width: 420px) {
+	.sidebar li .tooltip {
+		display: none;
+	}
+}

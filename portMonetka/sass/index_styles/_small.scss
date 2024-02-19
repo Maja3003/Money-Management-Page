@@ -1,0 +1,57 @@
+@media (min-width: 576px) {
+	.info {
+		grid-template-areas:
+			"title box"
+			"title box"
+			"title box";
+		padding: 10em 2em;
+
+		&__box {
+			display: grid;
+			justify-content: end;
+		}
+
+		&__title {
+			padding: 0 1em;
+		}
+
+		&__box-img,
+		&__box-text {
+			max-width: 500px;
+		}
+
+		&__bg-icon {
+			position: absolute;
+			display: block;
+			opacity: 0.05;
+			z-index: -5;
+		}
+
+		&__bg-icon-one {
+			top: 14%;
+			width: 20%;
+			animation: rotate-right 140s infinite linear;
+		}
+
+		&__bg-icon-two {
+			bottom: 15%;
+			width: 15%;
+			left: 15%;
+			animation: rotate-left 150s infinite linear;
+		}
+
+		&__bg-icon-three {
+			top: 30%;
+			left: 7%;
+			width: 60%;
+			animation: rotate-right 120s infinite linear;
+		}
+
+		&__bg-icon-four {
+			top: 55%;
+			left: -10%;
+			width: 15%;
+			animation: rotate-left 125s infinite linear;
+		}
+	}
+}

@@ -1,0 +1,170 @@
+@use "../index_styles/colors";
+@use "../index_styles/animations";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	font-family: "Raleway", sans-serif;
+	font-size: 1.6rem;
+	color: colors.$white;
+	background-color: colors.$dark;
+	overflow: hidden;
+}
+
+.shapes {
+	&__icon-one,
+	&__icon-two {
+		position: absolute;
+		opacity: 0.05;
+		z-index: -5;
+	}
+
+	&__icon-one {
+		bottom: 2em;
+		right: 10rem;
+		width: 20%;
+		animation: rotate-right 55s infinite linear;
+	}
+
+	&__icon-two {
+		top: 0;
+		left: 30rem;
+		width: 30%;
+		animation: rotate-left 55s infinite linear;
+	}
+}
+
+.wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 440px;
+
+	form {
+		* {
+			color: #fff;
+			letter-spacing: 0.5px;
+			border: none;
+		}
+
+		width: 400px;
+		background-color: rgba(255, 255, 255, 0.13);
+		border-radius: 10px;
+		backdrop-filter: blur(10px);
+		border: 2px solid colors.$hovergold;
+		box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+		padding: 50px 35px;
+
+		h1 {
+			font-size: 4rem;
+			font-weight: 500;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+		.form-box {
+			margin-bottom: 15px;
+
+			label {
+				display: block;
+				margin-bottom: 5px;
+			}
+
+			input {
+				width: 100%;
+				padding: 10px;
+				font-size: 16px;
+				background-color: rgba(255, 255, 255, 0.05);
+				border-radius: 3px;
+				backdrop-filter: blur(10px);
+			}
+
+			::placeholder {
+				color: #a0a0a0;
+			}
+
+			.error-text {
+				visibility: hidden;
+				// text-align: center;
+				margin: 5px 0 0 10px;
+				font-weight: 600;
+				font-size: 14px;
+				color: #ff0033;
+			}
+		}
+
+		.form-box.error .error-text {
+			visibility: visible;
+		}
+
+		.control-buttons {
+			display: flex;
+			flex-direction: column;
+
+			.send,
+			.clear {
+				display: block;
+				padding: 10px 0;
+				margin-bottom: 10px;
+				font-size: 18px;
+				background-color: #d6c78e;
+				color: #fff;
+				border: none;
+				border-radius: 8px;
+				cursor: pointer;
+				transition: background-color 0.3s;
+
+				&:hover {
+					background-color: colors.$hovergold;
+				}
+			}
+		}
+
+		.loginp {
+			text-align: right;
+
+			.sign-in-link {
+				text-decoration: none;
+			}
+
+			.sign-in {
+				color: colors.$gold;
+				cursor: pointer;
+				transition: color 0.3s;
+
+				&:hover {
+					color: colors.$hovergold;
+				}
+			}
+		}
+	}
+}
+
+.fa-x {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	font-size: 48px;
+	color: colors.$gold;
+	transition: color 0.2s;
+	cursor: pointer;
+}
+
+.fa-x:hover {
+	color: rgba(214, 199, 142, 0.4);
+}

@@ -1,0 +1,110 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.6rem;
+  color: #fff;
+  background-color: #232323;
+}
+
+.main {
+  margin-left: 78px;
+  height: 100vh;
+}
+.main .user__settings {
+  height: 100%;
+}
+.main .user__settings-title {
+  text-align: center;
+  padding: 10px 0 10px;
+  border-bottom: 1px solid #191919;
+}
+.main .user__settings-info-box {
+  display: flex;
+  padding-top: 10px;
+  min-width: 240px;
+  border-bottom: 1px solid #191919;
+}
+.main .user__settings-info-box-name {
+  padding-left: 15px;
+  width: 30%;
+}
+.main .user__settings-info-box-bio {
+  width: 58%;
+  margin-left: 15px;
+  margin-right: 10px;
+}
+.main .user__settings-info-box-p {
+  padding: 5px 0;
+}
+.main .user__settings-info-box-p.underline {
+  border-bottom: 1px solid #191919;
+}
+.main .user__settings-info-box-p.underline:last-child {
+  border-bottom: none;
+}
+.main .user__settings-form {
+  min-width: 290px;
+  padding: 15px 0;
+  border-bottom: 1px solid #191919;
+}
+.main .user__settings-form-container {
+  display: flex;
+}
+.main .user__settings-form-labels {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding-left: 15px;
+}
+.main .user__settings-form-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding-right: 15px;
+}
+.main .user__settings-form-item {
+  padding: 10px 0;
+}
+.main .user__settings-form-item:last-child {
+  padding: 17px 0;
+}
+.main .user__settings-form-input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.main .user__settings-form-input:focus {
+  outline: none;
+  border: 1px solid #d6c78e;
+}
+.main .user__settings-form .send {
+  display: block;
+  margin: 15px auto 0;
+  padding: 1em 2em;
+  border: 1px solid #d6c78e;
+  background: none;
+  color: #d6c78e;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+.main .user__settings-form .send:hover,
+.main .user__settings-form .send:focus {
+  outline: none;
+  color: #232323;
+  background-color: #d6c78e;
+}/*# sourceMappingURL=ustawienia.css.map */

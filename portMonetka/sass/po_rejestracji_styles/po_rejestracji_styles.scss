@@ -1,0 +1,89 @@
+@use "../index_styles/colors";
+@use "../index_styles/animations";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: "Raleway", sans-serif;
+	font-size: 1.6rem;
+	color: colors.$white;
+	background-color: colors.$dark;
+}
+
+.wrapper {
+	height: 100vh;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
+
+	.main {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		padding: 0 20px;
+
+		&__heading {
+			&-h {
+				text-align: center;
+				font-size: 40px;
+			}
+
+			.fa-check {
+				color: colors.$gold;
+			}
+		}
+
+		&__links {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			margin-top: 20px;
+
+			&-link {
+				position: relative;
+				padding: 10px 0;
+				font-size: 32px;
+				text-decoration: none;
+				color: colors.$gold;
+				cursor: pointer;
+			}
+
+			&-link::after,
+			&-link::before {
+				content: "";
+				position: absolute;
+				width: 0;
+				bottom: 0;
+				border-bottom: 2px solid colors.$gold;
+				transition: 0.3s;
+			}
+
+			&-link::after {
+				left: 50%;
+			}
+
+			&-link::before {
+				right: 50%;
+			}
+
+			&-link:hover::after,
+			&-link:hover::before {
+				width: 50%;
+			}
+		}
+	}
+}

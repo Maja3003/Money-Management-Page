@@ -1,0 +1,130 @@
+@use "../index_styles/colors";
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: "Raleway", sans-serif;
+	font-size: 1.6rem;
+	color: colors.$white;
+	background-color: colors.$dark;
+}
+
+.main {
+	margin-left: 78px;
+	height: 100vh;
+
+	.user__settings {
+		height: 100%;
+
+		&-title {
+			text-align: center;
+			padding: 10px 0 10px;
+			border-bottom: 1px solid colors.$darker;
+		}
+
+		&-info-box {
+			display: flex;
+			padding-top: 10px;
+			min-width: 240px;
+			border-bottom: 1px solid colors.$darker;
+
+			&-name {
+				padding-left: 15px;
+				width: 30%;
+			}
+
+			&-bio {
+				width: 58%;
+				margin-left: 15px;
+				margin-right: 10px;
+			}
+
+			&-p {
+				padding: 5px 0;
+			}
+
+			&-p.underline {
+				border-bottom: 1px solid colors.$darker;
+			}
+
+			&-p.underline:last-child {
+				border-bottom: none;
+			}
+		}
+
+		&-form {
+			min-width: 290px;
+			padding: 15px 0;
+			border-bottom: 1px solid colors.$darker;
+
+			&-container {
+				display: flex;
+			}
+
+			&-labels {
+				display: flex;
+				flex-direction: column;
+				width: 50%;
+				padding-left: 15px;
+			}
+
+			&-inputs {
+				display: flex;
+				flex-direction: column;
+				width: 50%;
+				padding-right: 15px;
+			}
+
+			&-item {
+				padding: 10px 0;
+			}
+
+			&-item:last-child {
+				padding: 17px 0;
+			}
+
+			&-input {
+				width: 100%;
+				margin-bottom: 10px;
+				padding: 10px;
+				background: none;
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				color: colors.$white;
+
+				&:focus {
+					outline: none;
+					border: 1px solid colors.$gold;
+				}
+			}
+
+			.send {
+				display: block;
+				margin: 15px auto 0;
+				padding: 1em 2em;
+				border: 1px solid colors.$gold;
+				background: none;
+				color: colors.$gold;
+				cursor: pointer;
+				transition: background-color 0.3s, color 0.3s;
+			}
+			.send:hover,
+			.send:focus {
+				outline: none;
+				color: colors.$dark;
+				background-color: colors.$gold;
+			}
+		}
+	}
+}
+
